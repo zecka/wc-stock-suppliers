@@ -1,6 +1,7 @@
 import $ from "./jquery";
 export default class Suppliers {
   constructor() {
+    console.log("init");
     this.handleClickBtnGet();
     this.suppliers = [];
     this.isFetching = false;
