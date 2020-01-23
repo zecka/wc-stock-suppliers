@@ -1,11 +1,5 @@
 <?php
-/**
- *
- * @link              https://robinferrari.ch
- * @since             1.0.1
- * @package           WCSS
- *
- * @wordpress-plugin
+/*
  * Plugin Name:       WC Stock Suppliers
  * Plugin URI:        https://robinferrari.ch
  * GitHub Plugin URI: zecka/wc-stock-suppliers
