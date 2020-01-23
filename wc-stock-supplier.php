@@ -2,7 +2,7 @@
 /**
  *
  * @link              https://robinferrari.ch
- * @since             1.0.0
+ * @since             1.0.1
  * @package           WCSS
  *
  * @wordpress-plugin
@@ -10,7 +10,7 @@
  * Plugin URI:        https://robinferrari.ch
  * GitHub Plugin URI: zecka/wc-stock-suppliers
  * Description:       Generate Stock report by supplier and send order to supplier
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Robin Ferrari
  * Author URI:        https://robinferrari.ch
  * License:           GPL-2.0+
@@ -24,12 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
-define( 'WCSS_VERSION', '1.0.0' );
+define( 'WCSS_VERSION', '1.0.1' );
 define( 'WCSS_SLUG', 'wc-stock-suppliers' );
 define( 'WCSS_PREFIX', 'wcss_' );
 define( 'WCSS_CAPABILITY', 'install_plugins' );

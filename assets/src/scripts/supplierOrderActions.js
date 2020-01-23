@@ -1,3 +1,4 @@
+import $ from "./jquery";
 export default class SuppliersOrderActions {
   constructor() {
     this.$metabox = $("#wcss-supplier-order-actions");
