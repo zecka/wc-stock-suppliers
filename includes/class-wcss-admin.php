@@ -98,6 +98,15 @@ class WCSS_Admin {
                                 'wpml_cf_preferences' => 0,
                             ),
                             array(
+                                'key'                 => WCSS_PREFIX.'field_disable_mail_sending',
+                                'label'               => __('Disable mail sending from WordPress', WCSS_SLUG),
+                                'name'                => 'disable_mail_sending',
+                                'type'                => 'true_false',
+                                'ui'                  =>  1,
+                                'required'            => 0,
+                                'default_value'       => 0,
+                            ),
+                            array(
                                 'key'                 => 'field_5e288e1d43a71',
                                 'label'               => 'From name',
                                 'name'                => 'from_name',

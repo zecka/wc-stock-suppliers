@@ -115,6 +115,9 @@ class WCSS_Supplier_Mail{
      * @return bool
      */
     public function send(){
+        if($this->plugin_settings['disable_mail_sending']){
+            return true;
+        }
         if($this->to && $this->subject && $this->mail_content()){
             // Set content type
             add_filter( 'wp_mail_content_type', [$this, 'html_content_type']  );
@@ -171,6 +174,7 @@ class WCSS_Supplier_Mail{
         ob_start();
         echo '<div style="padding: 10px">';
         echo 'Subject: '. $this->subject .'<br />';
+        echo 'To: '. $this->to .'<br />';
         foreach($this->headers as $header){
             echo  esc_html($header).'<br />';
         }
