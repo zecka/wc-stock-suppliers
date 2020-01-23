@@ -114,6 +114,13 @@ class WCSS_Product_CPT {
                     'type' => 'number',
                     'instructions' => esc_html__('Desired quantity to be kept continuously in stock', WCSS_SLUG),
                 ),
+                array(
+                    'key' => WCSS_PREFIX.'field_supploer_ref',
+                    'label' => esc_html__('Supplier ref', WCSS_SLUG),
+                    'name' => 'supplier_ref',
+                    'type' => 'text',
+                    'instructions' => esc_html__('REF For supplier', WCSS_SLUG),
+                ),
             ),
             'location' => array(
                 array(
@@ -143,6 +150,17 @@ class WCSS_Product_CPT {
                 ),
             )
         );
+
+         // Number Field
+        woocommerce_wp_text_input(
+            array(
+                'id'                => $this->prefix . 'supplier_ref[' . $variation->ID . ']',
+                'label'             => __('Supplier ref', WCSS_SLUG),
+                'desc_tip'          => 'true',
+                'description'       => __('REF For supplier', WCSS_SLUG),
+                'value'             => get_post_meta($variation->ID, $this->prefix . 'supplier_ref', true)
+            )
+        );
         
     }
 
@@ -151,6 +169,10 @@ class WCSS_Product_CPT {
         $min_stock_target = $_POST[$this->prefix . 'min_stock_target'][$post_id];
         if (!empty($min_stock_target)) {
             update_post_meta($post_id, $this->prefix . 'min_stock_target', esc_attr($min_stock_target));
+        }
+        $supplier_ref = $_POST[$this->prefix . 'supplier_ref'][$post_id];
+        if (!empty($supplier_ref)) {
+            update_post_meta($post_id, $this->prefix . 'supplier_ref', esc_attr($supplier_ref));
         }
     }
 }

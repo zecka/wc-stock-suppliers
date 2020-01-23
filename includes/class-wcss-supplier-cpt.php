@@ -75,9 +75,10 @@ class WCSS_Supplier_CPT{
             'fields' => array(
                 array(
                     'key' => $this->prefix.'suppliers_email',
+                    'description'=> __('Emails separated by a comma'),
                     'label' => 'email',
                     'name' => 'email',
-                    'type' => 'email',
+                    'type' => 'text',
                 ),
                 array(
                     'key' => $this->prefix.'contact_first_name',

@@ -4,7 +4,7 @@
  * Plugin URI:        https://robinferrari.ch
  * GitHub Plugin URI: zecka/wc-stock-suppliers
  * Description:       Generate Stock report by supplier and send order to supplier
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Robin Ferrari
  * Author URI:        https://robinferrari.ch
  * License:           GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WCSS_VERSION', '1.0.1' );
+define( 'WCSS_VERSION', '1.0.2' );
 define( 'WCSS_SLUG', 'wc-stock-suppliers' );
 define( 'WCSS_PREFIX', 'wcss_' );
 define( 'WCSS_CAPABILITY', 'install_plugins' );

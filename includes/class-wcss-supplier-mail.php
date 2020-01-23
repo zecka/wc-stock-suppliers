@@ -11,9 +11,9 @@ class WCSS_Supplier_Mail{
     private $from_name;
     /** @var string */
     private $from_email;
-    /** @var string */
+    /** @var array */
     private $to;
-    /** @var string */
+    /** @var string|array */
     private $subject;
     /** @var string */
     private $reply_to_name;
@@ -36,7 +36,7 @@ class WCSS_Supplier_Mail{
         $this->post         = get_post($post_id);
         $this->custom_email = get_field('custom_email', $post_id);
         $this->supplier     = get_post(get_field('supplier', $post_id));
-        $this->to           = get_field('email', $this->supplier);
+        $this->set_to();
         $this->supplier_custom_email = get_field('custom_email', $this->supplier);
         $this->plugin_settings = get_field('wcss_plugin_settings', 'options');
         $this->set_from_email();
@@ -49,6 +49,12 @@ class WCSS_Supplier_Mail{
         $this->set_headers();
         $this->set_cell_style();
         
+    }
+    private function set_to(){
+        $to = get_field('email', $this->supplier);
+        $to = str_replace(" ", "", $to);
+        $to = explode(",", $to);
+        $this->to = $to;
     }
     private function set_from_email(){
         $this->from_email = $this->plugin_settings['from_email'];
@@ -171,10 +177,11 @@ class WCSS_Supplier_Mail{
         return ob_get_clean();
     }
     public function preview(){
+        $to = $this->to;
         ob_start();
         echo '<div style="padding: 10px">';
         echo 'Subject: '. $this->subject .'<br />';
-        echo 'To: '. $this->to .'<br />';
+        echo 'To: '. implode(", ", $to) .'<br />';
         foreach($this->headers as $header){
             echo  esc_html($header).'<br />';
         }
@@ -192,9 +199,10 @@ class WCSS_Supplier_Mail{
         ?>
         <table style="border-collapse:collapse">
             <thead>
-                <th style="<?php echo $this->cell_style; ?>"><?php _e('SKU', WCSS_SLUG); ?></th>
+                <th style="<?php echo $this->cell_style; ?>"><?php _e('REF', WCSS_SLUG); ?></th>
                 <th style="<?php echo $this->cell_style; ?>"><?php _e('Title', WCSS_SLUG); ?></th>
                 <th style="<?php echo $this->cell_style; ?>"><?php _e('Quantity', WCSS_SLUG); ?></th>
+                <th style="<?php echo $this->cell_style; ?>"><?php _e('SKU', WCSS_SLUG); ?></th>
             </thead>
             <tbody>
                 <?php
@@ -209,13 +217,15 @@ class WCSS_Supplier_Mail{
     private function order_item_row($order_item){
         $product    = wc_get_product($order_item['product']);
         $sku        = ($product->get_sku()) ? $product->get_sku() : '';
-        $title       = $product->get_name();
+        $title      = $product->get_name();
+        $ref        = WCSS_Helpers::get_product_ref($product);
         $quantity   = $order_item['quantity'];
         ?>
         <tr>
-            <td style="<?php echo $this->cell_style; ?>"><?php echo $sku; ?></td>
+            <td style="<?php echo $this->cell_style; ?>"><?php echo $ref; ?></td>
             <td style="<?php echo $this->cell_style; ?>"><?php echo $title; ?></td>
             <td style="<?php echo $this->cell_style; ?>"><?php echo $quantity; ?></td>
+            <td style="<?php echo $this->cell_style; ?>"><?php echo $sku; ?></td>
         </tr>
         <?php
     }

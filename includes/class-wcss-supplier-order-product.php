@@ -7,6 +7,7 @@ class WCSS_Supplier_Product {
     private $stock;
     private $sku;
     private $stock_target;
+    private $supplier_ref;
 
     public function __construct($product, $variation_id){
         $this->product = $product;   
@@ -17,8 +18,10 @@ class WCSS_Supplier_Product {
         $this->sku          = $product->get_sku();
         if ($variation_id) {
             $this->stock_target = get_post_meta($variation_id, $this->prefix . 'min_stock_target', true);
+            $this->supplier_ref = get_post_meta($variation_id, $this->prefix . 'supplier_ref', true);
         } else {
             $this->stock_target = get_field('min_stock_target', $this->product->get_id());
+            $this->supplier_ref = get_field('supplier_ref', $this->product->get_id());
         }   
     }
     public function need_reorder(){
@@ -40,6 +43,7 @@ class WCSS_Supplier_Product {
             'to_order'       => $this->get_qty_to_order(),
             'stock'          => $this->stock,
             'stock_target'   => $this->stock_target,
+            'supplier_ref'   => $this->supplier_ref,
             'sku'            => $this->sku,
         ];
     }
