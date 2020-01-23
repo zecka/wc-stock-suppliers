@@ -1,0 +1,45 @@
+#suppliers {
+  .supplier-item {
+    text-align: center;
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 4px rgba(black, 0.4);
+    margin: 20px 0;
+    h3 {
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    h5 {
+      margin-top: 0;
+      text-align: center;
+    }
+    &__error {
+      background: rgba(red, 0.4);
+      border: 1px solid red;
+      border-radius: 3px;
+      padding: 10px;
+      margin: 20px;
+    }
+    table {
+      margin: auto;
+      text-align: left;
+    }
+    tbody tr td {
+      border-top: 1px solid #666;
+      padding: 3px;
+    }
+  }
+}
+#wcss-email-reminder {
+  padding: 20px;
+  margin: 25px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px rgba(black, 0.4);
+}
+
+.wp-core-ui .button-primary.wcss-button-danger {
+  background: #ba0000;
+  border-color: #ba0000;
+}
