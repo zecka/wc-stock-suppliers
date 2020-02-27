@@ -82,6 +82,7 @@ class WCSS_Supplier {
             'post_type'  => 'product',
             "meta_key"   => "supplier",
             "meta_value" => $this->supplier_id,
+            "posts_per_page"    => -1,
         ];
         $the_query = new WP_Query($args);
 

@@ -35,6 +35,9 @@ No screenshot for the moment
 
 == Changelog ==
 
+= 1.0.3 =
+* FIX: Remove limit of product per on supplier order generation
+
 = 1.0 =
 * SMTP Settings
 
