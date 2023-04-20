@@ -66,7 +66,7 @@ class WCSS_Tool{
              WCSS_SLUG, // parent page
               __('Generate supplier order', WCSS_SLUG), // page title
              __('Generate supplier order', WCSS_SLUG), // menu title
-             'install_plugins', // Capability
+             WCSS_CAPABILITY, // Capability
              WCSS_SLUG.'-generate',  // menu slug
              array($this, 'admin_page') // callback
         );

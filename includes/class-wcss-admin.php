@@ -7,6 +7,20 @@ class WCSS_Admin {
         add_action('admin_menu', [$this, 'admin_menu']);
         add_action('acf/init', [$this, 'option_page']);
         add_action('acf/init', [$this, 'smtp_configuration']);
+        add_action('admin_init', [$this, 'add_capability']);
+
+    }
+    function add_capability(){
+        $role = get_role('administrator');
+        $role->add_cap('publish_stocksupplier', true);
+        $role->add_cap('edit_stocksupplier', true);
+        $role->add_cap('edit_others_stocksupplier', true);
+        $role->add_cap('read_private_stocksupplier', true);
+        $role->add_cap('edit_stocksupplier', true);
+        $role->add_cap('delete_stocksupplier', true);
+        $role->add_cap('read_stocksupplier', true);
+        $role->add_cap('wcss_stock_supplier', true);
+
     }
     function smtp_configuration(){
         $settings = get_field('wcss_plugin_settings', 'options');

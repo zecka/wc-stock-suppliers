@@ -97,6 +97,16 @@ class WCSS_Supplier_Order_CPT {
             'exclude_from_search' => true,
             'publicly_queryable'  => false,
             'show_in_menu'        => WCSS_SLUG,
+            'capability_type' => 'stocksupplier',
+            'capabilities' => array(
+                'publish_posts' => 'publish_stocksupplier',
+                'edit_posts' => 'edit_stocksupplier',
+                'edit_others_posts' => 'edit_others_stocksupplier',
+                'read_private_posts' => 'read_private_stocksupplier',
+                'edit_post' => 'edit_stocksupplier',
+                'delete_post' => 'delete_stocksupplier',
+                'read_post' => 'read_stocksupplier',
+            ),
 
         );
         register_post_type($this->post_type, $args);
