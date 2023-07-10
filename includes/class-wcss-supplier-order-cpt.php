@@ -362,8 +362,8 @@ class WCSS_Supplier_Order_CPT {
                 <button id="wcss-preview-email" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo wp_create_nonce("wcss_preview_email"); ?>" class="button">
                     <?php _e('Preview email', WCSS_SLUG); ?>
                 </button>
-            <?php } 
-           
+            <?php }
+
         } else {
             _e('This order is complete', WCSS_SLUG);
         }
@@ -402,14 +402,16 @@ class WCSS_Supplier_Order_CPT {
         $stock_update = [];
         foreach($order_items as $item){
             $product = wc_get_product($item['product']);
-            $quantity = $item['quantity'];
-            $newQuantity  = $product->get_stock_quantity() + $quantity;
-            // 1. Updating the stock quantity
-            $stock_update[] = [
-                'product' => $product->get_id(),
-                'quantity' => $quantity
-            ];
-            update_post_meta($product->get_id(), '_stock', $newQuantity);
+            if($product){
+				$quantity = $item['quantity'];
+				$newQuantity  = $product->get_stock_quantity() + $quantity;
+				// 1. Updating the stock quantity
+				$stock_update[] = [
+					'product' => $product->get_id(),
+					'quantity' => $quantity
+				];
+				update_post_meta($product->get_id(), '_stock', $newQuantity);
+			}
         }
         update_field('_stock_update', $stock_update, $post_id);
         update_field('order_status', 'complete', $post_id);
@@ -425,5 +427,5 @@ class WCSS_Supplier_Order_CPT {
         }
         update_field('order_status', 'sent', $post_id);
     }
-    
+
 }
