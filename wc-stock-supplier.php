@@ -1,12 +1,12 @@
 <?php
 /*
  * Plugin Name:       WC Stock Suppliers
- * Plugin URI:        https://robinferrari.ch
+ * Plugin URI:        https://github.com/zecka/wc-stock-suppliers
  * GitHub Plugin URI: zecka/wc-stock-suppliers
  * Description:       Generate Stock report by supplier and send order to supplier
  * Version:           1.1.5
  * Author:            Robin Ferrari
- * Author URI:        https://robinferrari.ch
+ * Author URI:        https://github.com/zecka/wc-stock-suppliers
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wc-stock-suppliers
