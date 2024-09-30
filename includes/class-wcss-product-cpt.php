@@ -139,6 +139,7 @@ class WCSS_Product_CPT {
         // Number Field
         woocommerce_wp_text_input(
             array(
+                'type'              => 'number', 
                 'id'                => $this->prefix . 'min_stock_target[' . $variation->ID . ']',
                 'label'             => __('Stock target value', WCSS_SLUG),
                 'desc_tip'          => 'true',

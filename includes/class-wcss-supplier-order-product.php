@@ -22,7 +22,11 @@ class WCSS_Supplier_Product {
         } else {
             $this->stock_target = get_field('min_stock_target', $this->product->get_id());
             $this->supplier_ref = get_field('supplier_ref', $this->product->get_id());
-        }   
+        } 
+        if(!is_numeric($this->stock_target)){
+            $this->stock_target = 0;
+        }
+          
     }
     public function need_reorder(){
         return $this->stock_target > $this->stock;
